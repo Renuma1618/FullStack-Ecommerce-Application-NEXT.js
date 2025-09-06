@@ -1,18 +1,17 @@
-import {TagIcon} from '@sanity/icons'
+import { TrolleyIcon } from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export const categoryType = defineType({
   name: 'category',
   title: 'Category',
   type: 'document',
-  icon: TagIcon,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
     }),
     defineField({
-      name: 'slug',
+      name: 'slug',// slug is a just a url
       type: 'slug',
       options: {
         source: 'title',
@@ -23,4 +22,18 @@ export const categoryType = defineType({
       type: 'text',
     }),
   ],
-})
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'description',
+    },
+    prepare(selection) {
+      const {title, subtitle} = selection
+    
+      return {
+        title,
+        subtitle: subtitle ? `${subtitle.slice(0, 50)}...` : 'No description',
+      }
+    },
+  },
+});
