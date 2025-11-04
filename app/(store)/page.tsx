@@ -6,11 +6,16 @@ import ProductsView from "@/components/ProductsView";
 import { getAllCategories } from "@/sanity/lib/products/getCategories";
 import BlackFridayBanner from "@/components/BlackFridayBanner";
 
-
+export const dynamic="force-static";
+export const revalidate=60; // Revalidate every 60 seconds
 
 export default async function Home() {
   const products = await getAllProducts(); // Fetch all products from Sanity
   const categories = await getAllCategories(); // Fetch all categories from Sanity
+
+    console.log(crypto.randomUUID().slice(0,5)+
+ `>>> Rerendered home  page cache with ${products.length} products and ${categories.length} categories.`);
+
   return (
     <div>
       <BlackFridayBanner />

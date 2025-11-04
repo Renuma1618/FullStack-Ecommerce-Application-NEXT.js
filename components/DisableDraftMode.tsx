@@ -9,7 +9,7 @@ export function DisableDraftMode() {
 
   // Only show the disable draft mode button when outside of Presentation Tool
   //removed environemnt unknown
-  if (environment === "live" ) {
+  if (environment !== "live" && environment!== "unknown") {
     return null;
   }
 

@@ -29,7 +29,7 @@ export default defineConfig({
       previewUrl:{
         preview:"/",
         previewMode:{
-          enable:"/draft-model/enable",
+          enable:"/draft-mode/enable",
         },
       },
     }),
