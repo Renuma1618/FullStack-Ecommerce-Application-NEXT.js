@@ -4,7 +4,7 @@ import Stripe from "stripe";
 import { backendClient } from "@/sanity/lib/backendClient";
 import stripe from "@/lib/stripe";
 import { Metadata } from "@/actions/createCheckoutSession";
-import { headers } from "next/headers";
+
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

@@ -3,7 +3,7 @@ import { searchProductsByName } from '@/sanity/lib/products/searchProductByName'
 import React from 'react'
 
 async function Searchpage({searchParams}: {searchParams: {query?: string}}) {
-  const {query} = await searchParams;
+  const {query} =  searchParams;
   const products = await searchProductsByName(query??"");
   if(!products.length) {
   return (
