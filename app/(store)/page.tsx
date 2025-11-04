@@ -1,5 +1,3 @@
-
-import {Button}from "@/components/ui/button";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 import ProductsView from "@/components/ProductsView";
 // Update the import path to the correct module that exports getAllCategories

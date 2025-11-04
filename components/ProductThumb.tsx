@@ -5,8 +5,11 @@ import { imageUrl } from "@/lib/imageUrl";
 
 function ProductThumb({ product }: { product: Product }) {
     const isOutofStock  = product.stock != null && product.stock <= 0;
-    const slug = (product as any).slug ?.current;
-
+    // const slug = (product as any).slug ?.current;
+        const slug =
+        typeof (product as { slug?: { current?: string } }).slug?.current === "string"
+            ? (product as { slug: { current: string } }).slug.current
+            : undefined;
     return (
         <Link
             href={slug ? `/product/${slug}` : "#"}

@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   // Read RAW body ONCE (before anything else)
   const body = await req.text();
-  const headersList = await headers();
+  // const headersList = await headers();
   
 
   // TEMP sanity log: expect bodyLen > 0
@@ -34,17 +34,31 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let event: Stripe.Event;
+  // let event: Stripe.Event;
+  // try {
+  //   // Verify against RAW TEXT body
+  //   event = Stripe.webhooks.constructEvent(body, sig, webhookSecret);
+  // } catch (err: any) {
+  //   console.error("Webhook signature verification failed:", err);
+  //   return NextResponse.json(
+  //     { error: `Webhook Error: ${err.message ?? String(err)}` },
+  //     { status: 400 }
+  //   );
+  // }
+
+    let event: Stripe.Event;
   try {
     // Verify against RAW TEXT body
     event = Stripe.webhooks.constructEvent(body, sig, webhookSecret);
-  } catch (err: any) {
-    console.error("Webhook signature verification failed:", err);
+  } catch (err: unknown) {
+    const error = err instanceof Error ? err : new Error(String(err));
+    console.error("Webhook signature verification failed:", error);
     return NextResponse.json(
-      { error: `Webhook Error: ${err.message ?? String(err)}` },
+      { error: `Webhook Error: ${error.message}` },
       { status: 400 }
     );
   }
+
 
  
     if (event.type === "checkout.session.completed") {

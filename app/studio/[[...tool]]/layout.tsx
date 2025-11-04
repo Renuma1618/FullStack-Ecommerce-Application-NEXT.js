@@ -1,6 +1,4 @@
 
-import { title } from "process";
-
 export const metadata ={
     title:"Studio Layout",
     description:" layout fo rthe studio section of the application"
