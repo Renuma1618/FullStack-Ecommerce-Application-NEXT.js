@@ -21,7 +21,7 @@ async function ProductPage({
   
 
   console.log(crypto.randomUUID().slice(0,5)+
- `>>> Rerendering product page cache for  ${slug}`);
+ `>>> Rerendered product page cache for  ${slug}`);
 
   if (!product) {
     return notFound();
