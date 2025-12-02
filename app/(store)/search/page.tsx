@@ -14,7 +14,7 @@ async function SearchPage({
   // Extract the 'query' parameter from the searchParams object
   const { query } = await searchParams;
 
-  // Fetch products from Sanity that match the search query
+  // Fetch products from Sanity that match  search query
   const products = await searchProductsByName(query);
 
   // If no products are found, show a message to the user
